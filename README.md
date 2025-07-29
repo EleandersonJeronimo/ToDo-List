@@ -1,6 +1,6 @@
 # ToDo List - React & Tailwind CSS
 
-![Demonstração do ToDo List](ToDo.jpg)
+![Demonstração do ToDo List](./ToDo.jpg)
 
 ## 📖 Sobre o Projeto
 
