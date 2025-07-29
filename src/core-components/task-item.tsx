@@ -12,7 +12,6 @@ import { InputText } from "../components/Input-text";
 import { TaskState, type Task } from "../models/task";
 import { cx } from "class-variance-authority";
 import { useTask } from "../hooks/use-task";
-import { Skeleton } from "../components/Skeleton";
 
 interface TaskItemProps {
 	task: Task;
@@ -75,7 +74,7 @@ export function TaskItem({ task, loading }: TaskItemProps) {
 							onChange={handleChangeTaskStatus}
 							loading={loading}
 						/>
-						{!loading ? (
+						{!loading && (
 							<Text
 								className={cx("flex-1", {
 									"line-through": task?.concluded,
@@ -83,8 +82,6 @@ export function TaskItem({ task, loading }: TaskItemProps) {
 							>
 								{task?.title}
 							</Text>
-						) : (
-							<Skeleton className="h-6 flex-1" />
 						)}
 						<div className="flex gap-1">
 							<ButtonIcon

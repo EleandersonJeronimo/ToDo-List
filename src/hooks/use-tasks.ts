@@ -1,6 +1,5 @@
 import useLocalStorage from "use-local-storage";
 import { TASKS_KEY, TaskState, type Task } from "../models/task";
-import { delay } from "../helpers/utils";
 import React from "react";
 
 export function UseTasks() {
@@ -8,9 +7,8 @@ export function UseTasks() {
 	const [tasks, setTasks] = React.useState<Task[]>([]);
 	const [isLoadingTasks, setIsLoadingTasks] = React.useState(true);
 
-	async function fetchTasks() {
+	function fetchTasks() {
 		if (isLoadingTasks) {
-			await delay(2000);
 			setIsLoadingTasks(false);
 		}
 

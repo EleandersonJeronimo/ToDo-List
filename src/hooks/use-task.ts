@@ -1,6 +1,5 @@
 import useLocalStorage from "use-local-storage";
 import { TASKS_KEY, TaskState, type Task } from "../models/task";
-import { delay } from "../helpers/utils";
 import React from "react";
 
 export function useTask() {
@@ -19,9 +18,8 @@ export function useTask() {
 		]);
 	}
 
-	async function updatedTask(id: string, payload: { title: Task["title"] }) {
+	function updatedTask(id: string, payload: { title: Task["title"] }) {
 		setIsUpdatingTask(true);
-		await delay(1000);
 		setTasks(
 			tasks.map((task) =>
 				task.id === id
@@ -38,10 +36,9 @@ export function useTask() {
 		);
 	}
 
-	async function deleteTask(id: string) {
+	function deleteTask(id: string) {
 		setIsDeletingTask(true);
 
-		await delay(1000);
 		setTasks(tasks.filter((task) => task.id !== id));
 
 		setIsDeletingTask(false);

@@ -1,7 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Icon } from "./Icon";
 import checkIcon from "../assets/icons/check.svg?react";
-import { Skeleton } from "./Skeleton";
 
 export const inputCheckboxWrapperVariants = cva(
 	"inline-flex items-center justify-center relative group",
@@ -59,15 +58,6 @@ export function InputCheckbox({
 	loading,
 	...props
 }: inputCheckboxProps) {
-	if (loading) {
-		return (
-			<Skeleton
-				rounded="sm"
-				className={inputCheckboxVariants({ variant: "none", size })}
-			/>
-		);
-	}
-
 	return (
 		<label className={inputCheckboxWrapperVariants({ className })}>
 			<input

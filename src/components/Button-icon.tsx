@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Icon } from "./Icon";
-import { Skeleton } from "./Skeleton";
 import spinnerIcon from "../assets/icons/x.svg?react";
 
 export const buttonIconVariants = cva(
@@ -68,20 +67,6 @@ export function ButtonIcon({
 	handling,
 	...props
 }: ButtonIconProps) {
-	if (loading) {
-		return (
-			<Skeleton
-				rounded="sm"
-				className={buttonIconVariants({
-					variant: "none",
-					size,
-					className,
-					handling,
-				})}
-			/>
-		);
-	}
-
 	return (
 		<button
 			className={buttonIconVariants({

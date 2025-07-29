@@ -6,7 +6,6 @@ import { Container } from "../components/Container";
 import { Icon } from "../components/Icon";
 import { InputCheckbox } from "../components/Input-checkbox";
 import { InputText } from "../components/Input-text";
-import { Skeleton } from "../components/Skeleton";
 import confirmIcon from "../assets/icons/check.svg?react";
 import trashIcon from "../assets/icons/trash.svg?react";
 import plusIcon from "../assets/icons/plus.svg?react";
@@ -45,12 +44,6 @@ export function PageComponent() {
 
 				<div>
 					<Card size="md">Muito teste</Card>
-				</div>
-
-				<div className="space-y-2">
-					<Skeleton className="h-6" />
-					<Skeleton className="h-6" />
-					<Skeleton className="w-96 h-6" />
 				</div>
 			</div>
 		</Container>
