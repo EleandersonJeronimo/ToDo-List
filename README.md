@@ -1,69 +1,62 @@
-# React + TypeScript + Vite
+# ToDo List - React & Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Demonstração do ToDo List](ToDo.jpg)
 
-Currently, two official plugins are available:
+## 📖 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este é um projeto de uma aplicação de **Lista de Tarefas (ToDo List)** desenvolvido como parte do meu portfólio de front-end. O objetivo foi criar uma interface limpa, intuitiva e responsiva para o gerenciamento de tarefas diárias, utilizando tecnologias modernas e boas práticas de desenvolvimento.
 
-## Expanding the ESLint configuration
+A aplicação permite que o usuário adicione, edite, remova e marque tarefas como concluídas, com todos os dados salvos localmente no navegador.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✨ Funcionalidades
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-   📝 **Criação de Tarefas:** Adicione novas tarefas à sua lista de forma simples e rápida.
+-   ✅ **Marcar como Concluída:** Acompanhe seu progresso marcando tarefas como finalizadas.
+-   ✏️ **Edição de Tarefas:** Edite o texto de tarefas existentes (funcionalidade a ser implementada).
+-   🗑️ **Remoção de Tarefas:** Exclua tarefas que não são mais necessárias.
+-   💾 **Persistência de Dados:** Suas tarefas são salvas no **Local Storage** do navegador, então você não perde seu progresso ao recarregar a página.
+-   📊 **Contadores Dinâmicos:** Visualização em tempo real do número de tarefas criadas e concluídas.
+-   🎨 **Design Responsivo:** A interface se adapta a diferentes tamanhos de tela.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 🛠️ Tecnologias Utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Este projeto foi construído com as seguintes tecnologias e ferramentas:
+
+-   **React:** Biblioteca principal para a construção da interface de usuário.
+-   **TypeScript:** Para um código mais seguro, robusto e de fácil manutenção.
+-   **Vite:** Ambiente de desenvolvimento extremamente rápido e moderno.
+-   **Tailwind CSS:** Framework de estilização para um design ágil, customizável e responsivo.
+-   **Class Variance Authority (CVA):** Para criar componentes com variantes de estilo de forma organizada.
+-   **React Router:** Para o gerenciamento de rotas da aplicação.
+-   **use-local-storage:** Hook customizado para persistir o estado no Local Storage do navegador.
+-   **Biome:** Ferramenta para formatação e linting do código, garantindo consistência.
+-   **Vite-plugin-svgr:** Para importar arquivos SVG como componentes React.
+
+### 🚀 Como Executar o Projeto
+
+Para rodar este projeto localmente, siga os passos abaixo:
+
+**Pré-requisitos:**
+-   [Node.js](https://nodejs.org/en/) (versão 18 ou superior)
+-   [Git](https://git-scm.com/)
+-   Um gerenciador de pacotes (npm, yarn ou pnpm)
+
+```bash
+# 1. Clone o repositório
+git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+
+# 2. Acesse a pasta do projeto
+cd seu-repositorio
+
+# 3. Instale as dependências
+npm install
+
+# 4. Execute a aplicação em modo de desenvolvimento
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Após executar o último comando, abra `http://localhost:5173` (ou a porta indicada no seu terminal) no seu navegador para ver a aplicação.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📄 Licença
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes
