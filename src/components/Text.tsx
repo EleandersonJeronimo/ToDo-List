@@ -24,12 +24,13 @@ export function Text({
 	as = "span",
 	className,
 	children,
+	variant,
 	...props
 }: Textprops) {
 	return React.createElement(
 		as,
 		{
-			className,
+			className: textVariants({ variant, className }),
 			...props,
 		},
 		children,

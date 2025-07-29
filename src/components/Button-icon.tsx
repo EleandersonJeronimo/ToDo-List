@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Icon } from "./Icon";
 import { Skeleton } from "./Skeleton";
+import spinnerIcon from "../assets/icons/x.svg?react";
 
 export const buttonIconVariants = cva(
 	"inline-flex items-center justify-center cursor-pointer transition group",
@@ -18,11 +19,15 @@ export const buttonIconVariants = cva(
 			disabled: {
 				true: "opacity-50 pointer-events-none",
 			},
+			handling: {
+				true: "pointer-events-none",
+			},
 		},
 		defaultVariants: {
 			variant: "primary",
 			size: "sm",
 			disabled: false,
+			handling: false,
 		},
 	},
 );
@@ -31,9 +36,9 @@ export const buttonIconIconVariants = cva("transition", {
 	variants: {
 		variant: {
 			none: "",
-			primary: "fill-white",
-			secondary: "fill-pink-base group-hover:fill-white",
-			tertiary: "fill-gray-300 group-hover:fill-gray-400",
+			primary: "text-white",
+			secondary: "text-pink-base group-hover:text-white",
+			tertiary: "text-gray-300 group-hover:text-gray-400",
 		},
 		size: {
 			sm: "h-4 w-4",
@@ -50,6 +55,7 @@ interface ButtonIconProps
 		Omit<React.ComponentProps<"button">, "size" | "disabled"> {
 	icon: React.ComponentProps<typeof Icon>["svg"];
 	loading?: boolean;
+	handling?: boolean;
 }
 
 export function ButtonIcon({
@@ -59,23 +65,39 @@ export function ButtonIcon({
 	className,
 	icon,
 	loading,
+	handling,
 	...props
 }: ButtonIconProps) {
 	if (loading) {
 		return (
 			<Skeleton
 				rounded="sm"
-				className={buttonIconVariants({ variant: "none", size, className })}
+				className={buttonIconVariants({
+					variant: "none",
+					size,
+					className,
+					handling,
+				})}
 			/>
 		);
 	}
 
 	return (
 		<button
-			className={buttonIconVariants({ variant, size, disabled, className })}
+			className={buttonIconVariants({
+				variant,
+				size,
+				disabled,
+				className,
+				handling,
+			})}
 			{...props}
 		>
-			<Icon svg={icon} className={buttonIconIconVariants({ variant, size })} />
+			<Icon
+				svg={handling ? spinnerIcon : icon}
+				animate={handling}
+				className={buttonIconIconVariants({ variant, size })}
+			/>
 		</button>
 	);
 }

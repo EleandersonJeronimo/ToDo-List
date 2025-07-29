@@ -16,11 +16,15 @@ export const buttonVariants = cva(
 			disabled: {
 				true: "opacity-50 pointer-events-none",
 			},
+			handling: {
+				true: "pointer-events-none",
+			},
 		},
 		defaultVariants: {
 			variant: "primary",
 			size: "md",
 			disabled: false,
+			handling: false,
 		},
 	},
 );
@@ -39,7 +43,7 @@ export const buttonTextVariants = cva("", {
 export const buttonIconVariants = cva("transition", {
 	variants: {
 		variant: {
-			primary: "fill-pink-base",
+			primary: "text-pink-base",
 		},
 		size: {
 			md: "w-5 h-5",
@@ -52,12 +56,10 @@ export const buttonIconVariants = cva("transition", {
 });
 
 interface ButtonProps
-	extends React.ComponentProps<"button">,
+	extends Omit<React.ComponentProps<"button">, "size" | "disabled">,
 		VariantProps<typeof buttonVariants> {
 	icon?: React.ComponentProps<typeof Icon>["svg"];
-	disabled?: boolean;
-	children: string;
-	className?: string;
+	handling?: boolean;
 }
 
 export function Button({
@@ -65,6 +67,7 @@ export function Button({
 	size,
 	disabled,
 	children,
+	handling,
 	className,
 	icon: IconComponent,
 	...props
@@ -77,6 +80,7 @@ export function Button({
 			{IconComponent && (
 				<Icon
 					svg={IconComponent}
+					animate={handling}
 					className={buttonIconVariants({ variant, size })}
 				/>
 			)}
